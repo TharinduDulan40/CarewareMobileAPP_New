@@ -14,7 +14,7 @@ class LoginPage:
         self.message_box_btn = (By.ID, "messagebox_btn$0")
 
     def login(self, username, password):
-        self.driver.get("https://ksumcinternal.caresystemsinc.com/KSUMC_QA_Branch/html_interface/staff/login.jsp")
+        self.driver.get("https://ksumcinternal.caresystemsinc.com/KSUMC_QA_Trunk/html_interface/staff/login.jsp")
         self.driver.find_element(*self.username_input).clear()
         self.driver.find_element(*self.username_input).send_keys(username)
         self.driver.find_element(*self.password_input).clear()
