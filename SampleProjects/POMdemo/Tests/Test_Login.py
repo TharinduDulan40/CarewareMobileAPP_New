@@ -18,7 +18,7 @@ class TestLogin(unittest.TestCase):
         self.driver.quit()
 
     def test_valid_login(self):
-        self.login_page.login("bskaria", "admin")
+        self.login_page.login("kk116402", "admin")
         self.login_page.handle_message_box()
         time.sleep(2)
         header_menu_btn = self.driver.find_element(By.CSS_SELECTOR, "#header_menu_btn")
