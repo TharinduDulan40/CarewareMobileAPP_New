@@ -1,23 +1,8 @@
 import unittest
-import time
 from selenium import webdriver
 from SampleProjects.POMdemo.Pages.login_page import LoginPage
 from SampleProjects.POMdemo.Pages.Dashboard_Page import DashboardPage
-from HTMLTestRunner import HTMLTestRunner
-
-
-# add global delay for each test without adding time.sleep
-def add_delay(delay_time):
-    def decorator(func):
-        def wrapper(*args, **kwargs):
-            time.sleep(delay_time)  # Delay before the method
-            result = func(*args, **kwargs)
-            time.sleep(delay_time)  # Delay after the method
-            return result
-
-        return wrapper
-
-    return decorator
+from selenium.common.exceptions import NoSuchElementException, TimeoutException, ElementNotInteractableException
 
 
 class TestDashboardPage(unittest.TestCase):
@@ -34,44 +19,52 @@ class TestDashboardPage(unittest.TestCase):
         self.login_page.login("kk116402", "admin")
         self.login_page.handle_message_box()
         self.dashboard_page = DashboardPage(self.driver)
-        time.sleep(self.delay_time)  # Global delay before each test
 
     def tearDown(self):
-        time.sleep(self.delay_time)  # Global delay after each test
         self.driver.quit()
 
-    @add_delay(2)
     def test_click_schedule_link(self):
-        self.dashboard_page.click_schedule_link()
-        # Add assertions or further steps after clicking schedule link
+        try:
+            self.dashboard_page.click_schedule_link()
+            # Add assertions or further steps after clicking schedule link
+        except (NoSuchElementException, TimeoutException, ElementNotInteractableException) as e:
+            self.fail(f"Failed to click schedule link: {e}")
 
-    @add_delay(2)
     def test_click_leave_request_link(self):
-        time.sleep(2)
-        self.dashboard_page.click_leave_request_link()
-        time.sleep(2)
-        # Add assertions or further steps after clicking leave request link
+        try:
+            self.dashboard_page.click_leave_request_link()
+            # Add assertions or further steps after clicking leave request link
+        except (NoSuchElementException, TimeoutException, ElementNotInteractableException) as e:
+            self.fail(f"Failed to click leave request link: {e}")
 
-    @add_delay(2)
     def test_click_availability_link(self):
-        self.dashboard_page.click_availability_link()
-        # Add assertions or further steps after clicking availability link
+        try:
+            self.dashboard_page.click_availability_link()
+            # Add assertions or further steps after clicking availability link
+        except (NoSuchElementException, TimeoutException, ElementNotInteractableException) as e:
+            self.fail(f"Failed to click availability link: {e}")
 
-    @add_delay(2)
     def test_click_notification_link(self):
-        self.dashboard_page.click_notification_link()
-        # Add assertions or further steps after clicking notification link
+        try:
+            self.dashboard_page.click_notification_link()
+            # Add assertions or further steps after clicking notification link
+        except (NoSuchElementException, TimeoutException, ElementNotInteractableException) as e:
+            self.fail(f"Failed to click notification link: {e}")
 
-    @add_delay(2)
-    def test_click_bid_link(self):
-        self.dashboard_page.click_Bid_link()
-        # Add assertions or further steps after clicking bid link
+    def test_click_Bid_link(self):
+        try:
+            self.dashboard_page.click_Bid_link()
+            # Add assertions or further steps after clicking bid link
+        except (NoSuchElementException, TimeoutException, ElementNotInteractableException) as e:
+            self.fail(f"Failed to click Bid link: {e}")
 
-    @add_delay(2)
     def test_click_Punch_link(self):
-        self.dashboard_page.click_Punch_link()
-        # Add assertions or further steps after clicking bid link
+        try:
+            self.dashboard_page.click_Punch_link()
+            # Add assertions or further steps after clicking punch link
+        except (NoSuchElementException, TimeoutException, ElementNotInteractableException) as e:
+            self.fail(f"Failed to click Punch link: {e}")
 
 
 if __name__ == "__main__":
-    unittest.main(testRunner=HTMLTestRunner.HTMLTestRunner(output='reports'))
+    unittest.main()
