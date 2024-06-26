@@ -15,7 +15,7 @@ class TestLeave(unittest.TestCase):
         self.driver.implicitly_wait(10)
         self.driver.maximize_window()
         self.login_page = LoginPage(self.driver)
-        self.login_page.login("bskaria", "admin")
+        self.login_page.login("kk116402", "admin")
         self.login_page.handle_message_box()
         self.dashboard_page = DashboardPage(self.driver)
         time.sleep(2)
