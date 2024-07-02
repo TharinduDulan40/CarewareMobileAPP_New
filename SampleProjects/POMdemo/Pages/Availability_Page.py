@@ -61,9 +61,15 @@ class AvailabilityPage:
                 EC.visibility_of_element_located((By.ID, 'messagebox_body'))
             )
             message_text = message_box.text.strip()
+            print(f"Message Box Text: {message_text}")  # Add logging to capture the actual message
             ok_button = self.driver.find_element(By.ID, 'messagebox_btn$0')
             ok_button.click()
             return message_text
         except Exception as e:
             print(f"Error handling message box: {e}")
             return None
+
+    def click_edit_icon(self, availability_id):
+        availability_element = self.driver.find_element(By.ID, availability_id)
+        edit_icon = availability_element.find_element(By.CSS_SELECTOR, "img[src='./images/edit.svg']")
+        edit_icon.click()
