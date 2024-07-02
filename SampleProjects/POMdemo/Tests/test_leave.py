@@ -75,17 +75,17 @@ class TestLeave(unittest.TestCase):
         start_date = self.driver.find_element(By.ID, "start_date")
         start_date.click()
         start_date.clear()
-        start_date.send_keys("2023-12-31")
+        start_date.send_keys("2024-06-29")
 
     def test_select_end_date(self):
         end_date = self.driver.find_element(By.ID, "end_date")
         end_date.click()
         end_date.clear()
-        end_date.send_keys("2024-01-07")
+        end_date.send_keys("2024-06-29")
 
     def test_add_sick_leave(self):
-        time.sleep(2)
         self.test_navigate_AddRequest()
+        time.sleep(2)
         self.test_select_leaveType_sick()
         self.test_select_start_date()
         self.test_select_end_date()
