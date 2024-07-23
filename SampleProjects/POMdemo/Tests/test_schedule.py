@@ -142,4 +142,13 @@ class TestSchedule(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main()
+    suite = unittest.TestSuite()
+    suite.addTest(TestSchedule("test1_schedule_view"))
+    suite.addTest(TestSchedule("test2_backward_navigating_schedule"))
+    suite.addTest(TestSchedule("test3_forward_navigating_schedule"))
+    suite.addTest(TestSchedule("test4_schedule_view_detail_screen"))
+    suite.addTest(TestSchedule("test5_availability_link"))
+    suite.addTest(TestSchedule("test6_bid_link"))
+
+    runner = unittest.TextTestRunner()
+    runner.run(suite)
